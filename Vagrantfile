@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # port 8080 on the virtual machine is forwarded to port 9090 on the host.
   # This will allow the virtual machine to communicate of the common proxy port 8080.
-  config.vm.network :forwarded_port, guest: 8080, host: 9090
+  config.vm.network :forwarded_port, guest: 80, host: 8080
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -62,17 +62,18 @@ Vagrant.configure("2") do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = "cookbooks"
-    chef.roles_path = "roles"
+  # config.vm.provision :chef_solo do |chef|
+    # chef.cookbooks_path = "cookbooks"
+    # chef.roles_path = "roles"
     #chef.data_bags_path = "data_bags"
     #chef.add_recipe "mysql"
-    chef.add_recipe "starter"
     #chef.add_role "web"
-  #
+    #chef.add_recipe "apt"
+    #chef.add_recipe "apache2"
+  ##
   #   # You may also specify custom JSON attributes:
   #   chef.json = { :mysql_password => "foo" }
-  end
+  #end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
@@ -81,5 +82,11 @@ Vagrant.configure("2") do |config|
     chef.chef_server_url = "https://api.opscode.com/organizations/mike_bork"
     chef.validation_client_name = "mike_bork-validator"
     chef.validation_key_path = ".chef/mike_bork-validator.pem"
+    chef.add_recipe "apt"
+    chef.add_recipe "apache2"
+    chef.json = { :apache => {
+                                :default_site_enabled => "true"
+                              }
+                }
   end
 end
