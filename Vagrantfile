@@ -84,7 +84,8 @@ Vagrant.configure("2") do |config|
     chef.validation_client_name = "mike_bork-validator"
     chef.validation_key_path = ".chef/mike_bork-validator.pem"
     chef.add_recipe "apt"
-    chef.add_recipe "apache2"
+    chef.add_recipe "mongodb"
+    chef.add_recipe "passenger_apache2"
     chef.add_recipe "chef-splunk"
     chef.json = { :apache => {
                                 :default_site_enabled => "true"
