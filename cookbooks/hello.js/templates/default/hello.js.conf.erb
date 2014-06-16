@@ -1,0 +1,29 @@
+<VirtualHost *:80>
+  ServerAdmin <%= node['apache']['contact'] %>
+  RackEnv <%= node['rackenv'] %>
+
+  DocumentRoot /var/www/node-apps/hello-demo/current/public
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory /var/www/node-apps/hello-demo/current/public
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+
+  ErrorLog <%= node['apache']['log_dir'] %>/demo-error_log
+
+  # Possible values include: debug, info, notice, warn, error, crit,
+  # alert, emerg.
+  LogLevel warn
+
+  CustomLog <%= node['apache']['log_dir'] %>/demo-access_log combined
+  ServerSignature On
+
+</VirtualHost>
+
