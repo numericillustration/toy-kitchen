@@ -6,6 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+#
+
 application "hello-demo" do
   path "/var/www/node-apps/hello-demo"
   owner "vagrant"
