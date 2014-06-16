@@ -27,6 +27,7 @@ Vagrant.configure("2") do |config|
   # port 8080 on the virtual machine is forwarded to port 9090 on the host.
   # This will allow the virtual machine to communicate of the common proxy port 8080.
   config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 443, host: 8443
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -84,9 +85,18 @@ Vagrant.configure("2") do |config|
     chef.validation_key_path = ".chef/mike_bork-validator.pem"
     chef.add_recipe "apt"
     chef.add_recipe "apache2"
+    chef.add_recipe "chef-splunk"
     chef.json = { :apache => {
                                 :default_site_enabled => "true"
-                              }
+                             },
+                  :splunk => {
+                               :accept_license => "true",
+                               :is_server => "true",
+                               :ssl_options => {
+                                 :enable_ssl => "true"
+                               }
+
+                             }
                 }
   end
 end
