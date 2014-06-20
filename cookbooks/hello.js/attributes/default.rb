@@ -1,5 +1,5 @@
 default['passengerappenv'] = 'development'
-node['passenger']['install_method'] = 'package'
-node['passenger']['package']['name'] = 'libapache2-mod-passenger'
+default['passenger']['install_method'] = 'package'
+default['passenger']['package']['name'] = 'libapache2-mod-passenger'
 
 
