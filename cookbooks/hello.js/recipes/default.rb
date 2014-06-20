@@ -8,7 +8,7 @@
 #
 #
 
-ruby include_recipe "nodejs"
+ruby include_recipe "nodejs::install_from_package"
 ruby include_recipe "passenger_apache2"
 
 
