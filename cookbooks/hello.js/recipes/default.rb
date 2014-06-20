@@ -8,6 +8,14 @@
 #
 #
 
+ruby include_recipe "nodejs"
+ruby include_recipe "passenger_apache2"
+
+node['passenger']['install_method'] = 'package'
+node['passenger']['package']['name'] = 'libapache2-mod-passenger'
+
+
+
 application "hello.js" do
   path "/var/www/node-apps/hello.js"
   owner "vagrant"
