@@ -8,10 +8,10 @@
 #
 #
 
-application "hello-demo" do
-  path "/var/www/node-apps/hello-demo"
+application "hello.js" do
+  path "/var/www/node-apps/hello.js"
   owner "vagrant"
   group "vagrant"
   repository "https://github.com/numericillustration/hellojs.git"
-  passenger_apache2
+ # passenger_apache2
 end

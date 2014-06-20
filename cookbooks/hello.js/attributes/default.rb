@@ -1,1 +1,1 @@
-default['rackenv'] = 'development'
+default['passengerappenv'] = 'development'
