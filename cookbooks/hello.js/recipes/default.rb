@@ -13,4 +13,7 @@ application "hello.js" do
   owner "vagrant"
   group "vagrant"
   repository "https://github.com/numericillustration/hellojs.git"
+  nodejs do
+    entry_point "app.js"
+  end
 end
