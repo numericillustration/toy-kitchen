@@ -13,5 +13,4 @@ application "hello.js" do
   owner "vagrant"
   group "vagrant"
   repository "https://github.com/numericillustration/hellojs.git"
- # passenger_apache2
 end
