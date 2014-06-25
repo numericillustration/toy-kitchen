@@ -8,16 +8,12 @@
 #
 #
 
-ruby include_recipe "nodejs"
-ruby include_recipe "passenger_apache2"
-
 
 application "hello.js" do
   path "/var/www/node-apps/hello.js"
   owner "vagrant"
   group "vagrant"
   repository "https://github.com/numericillustration/hellojs.git"
-  nodejs do
-    entry_point "app.js"
-  end
+
+  
 end

@@ -83,13 +83,14 @@ Vagrant.configure("2") do |config|
     chef.chef_server_url = "https://api.opscode.com/organizations/mike_bork"
     chef.validation_client_name = "mike_bork-validator"
     chef.validation_key_path = ".chef/mike_bork-validator.pem"
-    #chef.add_recipe "apt"
+    chef.add_recipe "apt"
     #chef.add_recipe "mongodb"
     #chef.add_recipe "git"
     #chef.add_recipe "application"
     #chef.add_recipe "nodejs"
     #chef.add_recipe "hello.js"
-    #chef.add_recipe "chef-splunk"
+    chef.add_recipe "chef-splunk"
+    #chef.verbose_logging = "true"
     chef.json = { :apache => {
                                 :default_site_enabled => "true"
                              },
