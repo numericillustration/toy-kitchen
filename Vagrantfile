@@ -89,7 +89,8 @@ Vagrant.configure("2") do |config|
     #chef.add_recipe "application"
     #chef.add_recipe "nodejs"
     #chef.add_recipe "hello.js"
-    chef.add_recipe "chef-splunk"
+    #chef.add_recipe "chef-vault"
+    #chef.add_recipe "chef-splunk"
     #chef.verbose_logging = "true"
     chef.json = { :apache => {
                                 :default_site_enabled => "true"
