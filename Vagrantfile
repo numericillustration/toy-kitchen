@@ -92,17 +92,17 @@ Vagrant.configure("2") do |config|
     #chef.add_recipe "chef-vault"
     #chef.add_recipe "chef-splunk"
     #chef.verbose_logging = "true"
-    chef.json = { :apache => {
-                                :default_site_enabled => "true"
-                             },
-                  :splunk => {
-                               :accept_license => "true",
-                               :is_server => "true",
-                               :ssl_options => {
-                                 :enable_ssl => "true"
-                               }
-
-                             }
-                }
+    #chef.json = { :apache => {
+    #                            :default_site_enabled => "true"
+    #                         },
+    #              :splunk => {
+    #                           :accept_license => "true",
+    #                           :is_server => "true",
+    #                           :ssl_options => {
+    #                             :enable_ssl => "true"
+    #                           }
+#
+#                             }
+#                }
   end
 end
