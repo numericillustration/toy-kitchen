@@ -1,0 +1,41 @@
+{
+  "recipes" : [
+    "mysql::server"
+    , "mysql::client"
+    , "database::mysql"
+    , "zabbix"
+    , "zabbix::database"
+    , "zabbix::server"
+    , "zabbix::web"
+  ]
+  , "node" : {
+    "zabbix" : {
+      "database" : {
+          "install_method" : "mysql"
+          , "dbname" : "zabbix"
+          , "dbuser" : "zabbix"
+          , "dbhost" : "localhost"
+          , "dbpassword" : "password"
+          , "dbport" : "3306"
+          , "server_root_password" : "foobar"
+      }
+      , "agent" : {
+          "branch" : "ZABBIX%20Latest%20Stable"
+          , "version" : "2.0.0"
+          , "install_method" : "prebuild"
+          , "servers" : [
+              "localhost"
+          ]
+      }
+      , "server" : {
+          "branch" : "ZABBIX%20Latest%20Stable"
+          , "version" : "2.2.2"
+          , "install_method" : "source"
+      }
+      , "web" : {
+        "install" : true
+        , "fqdn" : "localhost"
+      }
+    }
+  }
+}

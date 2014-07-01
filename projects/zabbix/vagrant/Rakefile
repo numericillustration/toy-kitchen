@@ -1,0 +1,39 @@
+require 'rubygems'
+require 'vagrant'
+
+VagrantEnv = Vagrant::Environment.new
+task :default do  | t |
+
+   if !VagrantEnv.primary_vm.created? || VagrantEnv.primary_vm.state != :running
+      Rake::Task[:up].invoke
+   else
+      Rake::Task[:provision].invoke
+   end
+   
+end
+
+desc "Provision vagrant instance."
+task :provision do
+   
+   puts "About to provision the vagrant instance."
+   VagrantEnv.cli("provision")
+end
+
+desc "Startup vagrant."
+task :up do
+
+   puts "About to run vagrant-up"
+   VagrantEnv.cli("up")
+   puts "Finished running vagrant-up"
+
+end
+
+desc "Show errors from a bad run."
+task :display_chef_errors do
+
+   raise "Must run `vagrant up`" if !VagrantEnv.primary_vm.created?
+   raise "Must be running!" if VagrantEnv.primary_vm.state != :running
+   puts "going to cat the chef-stacktrace."
+   VagrantEnv.primary_vm.channel.sudo("cat /tmp/vagrant-chef-1/chef-stacktrace.out")
+
+end

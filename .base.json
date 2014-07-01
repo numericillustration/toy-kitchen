@@ -1,0 +1,6 @@
+{
+  "cookbooks_path"   : "../../../cookbooks"
+  , "roles_path"     : "../../../roles"
+  , "data_bags_path" : "../../../data_bags"
+  , "node" : { "instance_role" : "vagrant" }
+}

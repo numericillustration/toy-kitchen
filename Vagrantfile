@@ -26,12 +26,13 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # port 8080 on the virtual machine is forwarded to port 9090 on the host.
   # This will allow the virtual machine to communicate of the common proxy port 8080.
-  config.vm.network :forwarded_port, guest: 80, host: 8080
-  config.vm.network :forwarded_port, guest: 443, host: 8443
+  #config.vm.network :forwarded_port, guest: 80, host: 8080
+  #config.vm.network :forwarded_port, guest: 443, host: 8443
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "172.16.3.100"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
